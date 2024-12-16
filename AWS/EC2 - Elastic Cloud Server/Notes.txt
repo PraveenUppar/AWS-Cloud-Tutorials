@@ -1,0 +1,37 @@
+EC2 --> Elastic Cloud Service 
+
+HOW TO CREATE A EC2 INSTANCE
+
+Step 1: AWS --> EC2 --> Launch Instance
+Step 2: Name --> Image --> AMI --> Instance Type
+Step 3: Create a Key pair --> Name --> Type rsa --> File Format .pem
+Step 4: Network Setting --> Default
+Step 5: Launch Instance
+Step 6: Instance Running --> Instance ID , Pubic IP , Private IP , Auto assigned IP
+Step 7: The problem the IP Address is not static it will change so 
+Step 8: Go to Network --> Elastic IP --> Allocate Elastic IP --> No changes --> Allocate
+Note: It is like buying a IP address if you create and not connect the IP address it will start charging if you connect no issues
+Step 9: Connect your Allocated IP to Instance IP address
+Step 10: Associate IP address --> Instance --> Select Instance --> Associate
+Step 11: Instance IP address is connected to Allocated IP address
+Step 12: Connect --> Browser connect --> Server terminal will be opened
+
+HOW TO HOST WEBSITE ON EC2
+
+Step 1: Create a EC2 Instance
+Step 2: Install node js in EC2
+Step 3: Run the command [ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash ]
+                        [ source ~/.bashrc ]
+Step 4: Run the command --> nvm install node --> node <--to check
+Step 5: Run the command --> git clone 
+Step 6: ls --> cd --> npm i --> npm run build --> npm i -g serve --> serve
+Step 7: The website is being hosted
+Step 8: Before that you have add security group to the EC2 --> Security Group --> Inbound rules --> Add rule --> Custom TCP --> The port the website was running 
+Step 9: To check paste your EC2 IP + add the port ID that you just added you will see the website hosted
+Step 10: How to connect to a domain name --> Buy Domain and link the IP to the domain name
+
+
+
+
+
+

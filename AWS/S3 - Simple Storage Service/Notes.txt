@@ -1,0 +1,93 @@
+S3 (Simple Storage Service)
+
+There is a limit of 100 buckets in one AWS account but we can store unlimited objects in the bucket
+
+HOW TO CREATE A BUCKET
+
+Step 1: Bucket Name should be globally unique --> It will make a URL for the Bucket objects also
+Step 2: Region
+Step 3: Public access of a bucket is blocked
+Step 4: Upload --> Drag and Drop --> URL will be created
+Step 5: Change the bucket access to public access --> Permissions
+Step 6: Create a bucket policy --> Edit --> Action --> S3 --> Get obj --> Resource --> All Resource
+
+Google for pubic access Bucket policy
+
+HOW TO HOST WEBSITE ON S3
+
+Step 1: Create a bucket 
+Step 2: Static website hosting --> Edit --> Enable
+Step 3: Index document --> index.html
+Step 4: Save Changes
+Step 5: Upload the website files in the bucket
+
+HOW TO UPLOAD OBJECTS TO PRIVATE BUCKET --> Do using Presigned URL
+
+To upload objects to a private bucket we need TOKEN + SIGNATURE
+
+To install aws in the node js we need AWS SDK: 
+
+A software development kit (SDK) is a set of platform-specific building tools for developers. 
+You require components like debuggers, compilers, and libraries to create code that runs on a specific platform, operating system, or programming language. 
+SDKs put everything you need to develop and run software in one place.
+
+For S3 Client --> npm install @aws-sdk/client-s3
+For Pre-Signed URL --> npm install require @aws-sdk/s3-request-presigner
+
+HOW TO GET AND PUT OBJECTS IN THE BUCKET WITH NODE.JS BACKEND WITH AWS CONSOLE
+
+GET OBJECTS FROM AWS S3:(ONLY TO VIEW THE OBJECTS)
+
+Step 1: Make a file and install the library --> npm install @aws-sdk/client-s3 --> npm install require @aws-sdk/s3-request-presigner
+Step 2: Make a index.js file
+Step 3: Code --> It creates a presigned URL for the Client to view the object from the AWS S3
+
+const {S3Client,getObjectCommand} = require("@aws-sdk/client-s3")
+const {getSignedUrl} from "@aws-sdk/s3-request-presigner"
+
+const s3Client = new S3Client({
+    region: ""
+    credentials: {
+        accessKeyId: "",
+        secretAccessKey: "",
+    },
+});
+
+async function getObjectCommand(key){
+    const command = new getObjectCommand({
+        Bucket: "Bucket_Name",
+        Key:key
+    })
+    const url = await getSignedUrl(s3Client,command)
+    return url
+}
+console.log(await getObjectURL("object_name"))
+
+
+PUT OBJECTS FROM AWS S3:(UPLOAD AND VIEW THE OBJECTS)
+
+BEFORE THIS WE USED TO UPLOAD FILES FROM THE USER TO THE SERVER USING MULTER AND IT USED TO STORE IT IN THE SERVER FILES
+THE PROBLEM IS SOMETIMES THE UPLOAD CAN BE LARGE DUE TO WHICH IT WILL END UP TAKING LARGE SPACE AND SERVER MAY CRASH
+
+SOLUTION : WHEN THE USER UPLOAD A FILE THE SERVER FIRST CHECK THE NAME,TYPE ETC THEN WE WILL SEND A PRESIGNED URL THAT IS LINKED TO OUR AWS S3
+           THEN THE USE CAN UPLOAD THE FILE TO THE AWS S3 AS OBJECT  
+
+
+
+HOW TO HOST STATIC WEBSITE FILES USING CDN AND S3
+
+CDN(Content Delivery Network) --> CDN is a geographically distributed group of servers that caches content close to end users.
+                                  A CDN allows for the quick transfer of assets needed for loading Internet content, including HTML pages, JavaScript files, stylesheets, images, and videos
+
+Provider --> Cloudflare and AWS CloudFront
+We use CDN to deliver the content and S3 to store the content
+
+
+
+
+
+
+
+
+
+
