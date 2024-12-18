@@ -1,18 +1,29 @@
+Cloud Computing -->  On demand delivery of IT resources over the internet with pay=as=you-go model
 
+Cloud Providers:
+1. AWS
+2. GCP
+3. AZURE
 
+Types of Cloud:
+1. Private Cloud
+2. Public Cloud --> Cloud resources are owned and operated b third party cloud provider
+3. Hybrid Cloud 
 
+Types of Service:
+1. IAAS
+2. PAAS
+3. SAAS
 
+Global Infra:
+The AWS Cloud spans 108 Availability Zones within 34 geographic regions, with announced plans for 18 more Availability Zones
 
+Region --> Availability Zones --> Local Zone --> 
 
+AWS Edge Location --> CDN (Content Delivery Network) --> ISP (Internet Service Provider)
+A site that CloudFront uses to cache copies of your content for faster delivery to users at any location.
 
-
-
-
-
-
-
-
-
+AWS Region Edge Cache --> Photo
 
 
 

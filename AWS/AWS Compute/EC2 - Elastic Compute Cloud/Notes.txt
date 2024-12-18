@@ -1,0 +1,115 @@
+EC2 --> Elastic Compute Cloud
+
+Amazon Elastic Compute Cloud (Amazon EC2) provides on-demand, scalable computing capacity in the Amazon Web Services (AWS) Cloud.
+An EC2 instance is a virtual server in the AWS Cloud. When you launch an EC2 instance, the instance type that you specify determines the hardware available to your instance.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Amazon EC2 provides the following high-level features:
+
+Instances
+Virtual servers.
+
+Amazon Machine Images (AMIs)
+Pre configured templates for your instances that package the components you need for your server (including the operating system and additional software).
+(Windows,Linux,MacOS)
+Uses --> Rapid Instance Deployment + Scaling + CLoning + Recovery
+
+Root Device Type --> When you launch an instance, we create a root volume for the instance. The root volume contains the image used to boot the instance. Each instance has a single root volume. You can add storage volumes to your instances during or after launch.
+                    The AMI that you use to launch an instance determines the type of root volume. You can launch an instance from either an Amazon EBS-backed AMI (Linux and Windows instances) or an instance store-backed AMI (Linux instances only)
+
+Amazon Elastic Block Store (Amazon EBS) provides scalable, high-performance block storage resources that can be used with Amazon Elastic Compute Cloud (Amazon EC2) instances
+
+HVM (known as Hardware Virtual Machine) is the type of instance that mimics bare-metal server setup which provides better hardware isolation.
+The OS can run directly on top of the Virtual Machine without additional configuration making it to look like it is running on a real physical server.
+
+The Elastic Network Adapter (ENA) is designed to provide Enhanced Networking to your EC2 instances. With ENA, you can expect high throughput and packet per second (PPS) performance, as well as consistently low latencies on Amazon EC2 instances.
+
+Instance types
+Various configurations of CPU, memory, storage, networking capacity, and graphics hardware for your instances.
+ 
+Amazon EBS volumes
+Persistent storage volumes for your data using Amazon Elastic Block Store (Amazon EBS).
+
+Instance store volumes
+Storage volumes for temporary data that is deleted when you stop, hibernate, or terminate your instance.
+
+Key pairs
+Secure login information for your instances. AWS stores the public key and you store the private key in a secure place.
+
+Security groups
+A virtual firewall that allows you to specify the protocols, ports, and source IP ranges that can reach your instances, and the destination IP ranges to which your instances can connect.
+
+WHAT IS MEANING OF STATEFUL SECURITY GROUPS ????
+When the server send a request it stores the information about transfer and allow a response even if the inbound rule is blocked 
+
+Whenever we create a new instance we automatically connect with a NIC and
+A network interface card (NIC) is a hardware component without which a computer cannot be connected over a network. It is a circuit board installed in a computer that provides a dedicated network connection to the computer.
+
+Types of server --> Web server + Email Server + File Server + DB Server + DNS Server
+
+Web server carry HTTP OR HTTPS 
+Email server carry SMTP OR POP3
+File server carry NFS OR SMB
+DB server carry MYSQL OR Oracle
+
+Public and Private IP (Internet Protocol)
+A public IP address is unique and visible to everyone. It ensures that you can be clearly identified on the internet. 
+By contrast, a private IP address is only used within a private network. This allows the devices within a network to connect securely to one another.
+
+HOW TO COMMUNICATE WITH TWO EC2 ONE WITH PUBLIC IP AND OTHER WITH NO PUBLIC ??
+--> To access EC2 with a private IP we need to connect to EC2 with pubic IP and then connect to EC2 with a private IP
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+HOW TO CREATE A EC2 INSTANCE
+
+Step 1: AWS --> EC2 --> Launch Instance
+Step 2: Name --> Image --> AMI --> Instance Type
+Step 3: Create a Key pair --> Name --> Type rsa --> File Format .pem
+Step 4: Network Setting --> Default
+Step 5: Launch Instance
+Step 6: Instance Running --> Instance ID , Pubic IP , Private IP , Auto assigned IP
+Step 7: The problem the IP Address is not static it will change so 
+Step 8: Go to Network --> Elastic IP --> Allocate Elastic IP --> No changes --> Allocate
+Note: It is like buying a IP address if you create and not connect the IP address it will start charging if you connect no issues
+Step 9: Connect your Allocated IP to Instance IP address
+Step 10: Associate IP address --> Instance --> Select Instance --> Associate
+Step 11: Instance IP address is connected to Allocated IP address
+Step 12: Connect --> Browser connect --> Server terminal will be opened
+
+HOW TO HOST WEBSITE ON EC2
+
+Step 1: Create a EC2 Instance
+Step 2: Install node js in EC2
+Step 3: Run the command [ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash ]
+                        [ source ~/.bashrc ]
+Step 4: Run the command --> nvm install node --> node <--to check
+Step 5: Run the command --> git clone 
+Step 6: ls --> cd --> npm i --> npm run build --> npm i -g serve --> serve
+Step 7: The website is being hosted
+Step 8: Before that you have add security group to the EC2 --> Security Group --> Inbound rules --> Add rule --> Custom TCP --> The port the website was running 
+Step 9: To check paste your EC2 IP + add the port ID that you just added you will see the website hosted
+Step 10: How to connect to a domain name --> Buy Domain and link the IP to the domain name
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CREATING EC2 INSTANCE WITH WINDOWS --> https://www.youtube.com/watch?v=739daZJumWM&list=PLIm9KY-ideOsCuwMRoX1ltMZGuNZeBrRp&index=13
+CREATING EC2 INSTANCE WITH LINUX --> https://www.youtube.com/watch?v=gkFYUI_p9GM&list=PLIm9KY-ideOsCuwMRoX1ltMZGuNZeBrRp&index=14&t=5s
+
+WHAT IS EC2 AMI --> https://www.youtube.com/watch?v=3U-K_TGXhmc&list=PLIm9KY-ideOsCuwMRoX1ltMZGuNZeBrRp&index=16
+WHATS IS EC2 PUBLIC AND PRIVATE IP --> https://www.youtube.com/watch?v=GVT7e_MYs9A&list=PLIm9KY-ideOsCuwMRoX1ltMZGuNZeBrRp&index=17
+AWS EC2 Security Group --> https://www.youtube.com/watch?v=V5KhahMtnpo&list=PLIm9KY-ideOsCuwMRoX1ltMZGuNZeBrRp&index=23
+
+
+WHAT IS PING ?? --> Its is a two communication of Echo Request and Echo Response It is use to check the STATEFUL state of the server
+
+HOW TO PREVENT INSTANCE FROM BEING TERMINATED ???? 
+We can do it by enabling TERMINATION PROTECTION
+
+PLACEMENT GROUPS IN EC2 ???
+Enable to influence how instances are placed on the hardware
+
+TYPES: 
+1. Clustered --> Packs instances close together inside an Availability Zone
+2. Spread --> Strictly places a small group of instances across distinct underlying hardware to reduce correlated failures. 
+3. Partition --> Spreads your instances across logical partitions such that groups of instances in one partition do not share the underlying hardware with groups of instances in different partitions
