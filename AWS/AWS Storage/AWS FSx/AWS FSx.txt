@@ -1,0 +1,29 @@
+
+AWS FSx Netapp ONTAP
+
+Netapp --> Known for its NAS(Network Attached Storage)
+Netapp ONTAP --> It is the most significant Storage OS
+
+Amazon FSx makes it easy and cost effective to launch, run, and scale feature-rich, high-performance file systems in the cloud. It supports a wide range of workloads with its reliability, security, scalability, and broad set of capabilities
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
