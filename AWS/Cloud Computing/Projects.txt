@@ -1,0 +1,14 @@
+1. EC2
+2. S3
+3. Bostian Host
+4. VPC Peering 
+5. VPC NAT Gateway
+6. EFS 
+7. EBS
+8. 
+9. 
+10. 
+
+
+
+

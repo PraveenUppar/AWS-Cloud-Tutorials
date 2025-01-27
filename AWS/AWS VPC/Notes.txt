@@ -1,0 +1,135 @@
+AWS VPC (Virtual Private CLoud) -- Isolates our network resources
+
+Two users --> Two instance --> Same physical host --> Same Zone --> Same Region
+Both the instance are protected by each other by VPC
+
+With Amazon Virtual Private Cloud (Amazon VPC), you can launch AWS resources in a logically isolated virtual network that you've defined
+
+Without VPC adn subnet we cannot launch EC2    
+we can add upto 5 CIDR RANGE WITHIN SINGLE VPC
+
+A VPC can have more than 1 IP address range which is used to connect diff subnets
+
+In one zone we can only create only one subnet so to create multiple subnets in diff zones we need to create 
+multiple IP address range in the VPC 
+
+Step 1: Create a VPC 
+A default VPC  is always assigned when created an account
+We can create a custom VPC in AWS
+
+Step 2: Create a subnet
+
+What is subnet ? --> Region --> VPC --> Zones --> Subnets
+A subnet can only use only one Zone create a diff subnet in diff zones 
+
+Step 3: Internet Gateway
+
+What is internet gateway --> Region --> VPC --> Zones --> Subnets --> Internet Gateway
+Internet Gateway is always attached to the VPC not the subnets 
+Inbound and outbound is only allowed for those instances which have public IP
+Internet bandwidth --> Unlimited
+
+Step 4: Route Table Entry
+
+What is route table entry --> --> Region --> VPC --> Zones --> Subnets --> Internet Gateway --> Route Table
+It connects the subnets inside VPC and connects to the Internet Gateway
+
+VPC two-tier architecture
+
+Region --> VPC --> 2 Zones --> 2 Subnets in diff zones --> 1 private subnet for database and 1 public subnet for web server 
+
+For database no inbound and it is set as private subnet 
+
+REFER IMAGE FOR MORE DETAILS
+
+** ONLY PUBLIC IP WILL CONNECT TO INTERNET GATEWAY
+
+VPC Instance Endpoint
+
+https://www.youtube.com/watch?v=QfPogdMGTcE&list=PLIm9KY-ideOsCuwMRoX1ltMZGuNZeBrRp&index=64
+
+In the two tier architecture we have a region --> VPC --> two zones --> and in each zone we have private and public subnet 
+in private subnet we have our ec2 and in public subnet we have our another ec2
+
+The one in the public subnet has both pubic and private IP so we can access from internet as it is connected to internet gateway through route table for public IP
+But for the private subnet we have only private IP and no internet connection has it is not connected to internet gateway but only connected to main route table 
+(we cant connect to through private IP bcz it is not connected to internet gateway)
+
+Method 1:
+HOW WE ACCESS THE EC2 FROM PRIVATE SUBNET --> Creating VPC ENDPOINTS
+
+Method 2: 
+Now we created a instance endpoint we can access the private subnet ec2 from the public subnet ec2
+(IT IS CALLED AS BASTION HOST)
+
+THOUGH WE CONNECTED THE PROBLEM IN PRIVATE SUBNET EC2 WE CANNOT DOWNLOAD ANY ANYTHING (OS,DATA,SECURITY,DEPENDEIES) BCZ NO INTERNET
+
+AWS VPC NAT GATEWAY -- It connects the internet to private subnet ec2 from the internet gateway through the public subnet ec2
+
+** ONLY OUTBOUND INTERNET NO INBOUND INTERNET
+A public ip is assigned to the NAT GATEWAY --> Table Router --> Internet Gateway
+A NAT gateway is a Network Address Translation (NAT) service. 
+You can use a NAT gateway so that instances in a private subnet can connect to services outside your VPC but external services cannot initiate a connection with those instances.
+
+***we create a NAT gateway in the pubic subnet not in private subnet
+
+VPC PEERING --> Allow us to COMMUNICATe with VPCs form same region and diff region
+
+https://www.youtube.com/watch?v=iCo1zmh8hBU&list=PLIm9KY-ideOsCuwMRoX1ltMZGuNZeBrRp&index=65
+
+** IN A REGION WE CAN MAX MAKE up to 5 VPC
+** IN A REGION TWO VPC CANNOT COMMUNICATE WITH EACH OTHER BY DEFAULT
+
+ONCE WE ARE CONNECTED WITH TWO VPC AND THE STATUS IS ACTIVE BUT THE COMMUNICATION IS NOT YET ACTIVATED BCZ AFTER PEERING CONNECTION WE HAVE TO DO A ROUTE TABLE ENTRY
+ROUTE TABLE ENTRY SHOULD BE DONE FOR BOTH THE VPC
+
+AWS Network Access Control List (ACL) --> 
+
+
+
+
+----------   AWS NOTES  -----------
+
+Virtual private clouds (VPC)
+A VPC is a virtual network that closely resembles a traditional network that you'd operate in
+your own data center. After you create a VPC, you can add subnets.
+
+Subnets
+A subnet is a range of IP addresses in your VPC. A subnet must reside in a single Availability
+Zone. After you add subnets, you can deploy AWS resources in your VPC.
+
+IP addressing
+You can assign IP addresses, both IPv4 and IPv6, to your VPCs and subnets. You can also bring
+your public IPv4 addresses and IPv6 GUA addresses to AWS and allocate them to resources in
+your VPC, such as EC2 instances, NAT gateways, and Network Load Balancers.
+
+Routing
+Use route tables to determine where network traffic from your subnet or gateway is directed.
+
+Gateways and endpoints
+A gateway connects your VPC to another network. For example, use an internet gateway to
+connect your VPC to the internet. Use a VPC endpoint to connect to AWS services privately,
+without the use of an internet gateway or NAT device.
+
+Peering connections
+Use a VPC peering connection to route traffic between the resources in two VPCs.
+
+Traffic Mirroring
+Copy network traffic from network interfaces and send it to security and monitoring appliances
+for deep packet inspection.
+
+Transit gateways
+Use a transit gateway, which acts as a central hub, to route traffic between your VPCs, VPN
+connections, and AWS Direct Connect connections.
+
+VPC Flow Logs
+A flow log captures information about the IP traffic going to and from network interfaces in
+your VPC.
+
+VPN connections
+Connect your VPCs to your on-premises networks using AWS Virtual Private Network (AWS
+VPN)
+
+
+
+
