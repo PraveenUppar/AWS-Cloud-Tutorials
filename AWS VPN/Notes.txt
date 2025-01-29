@@ -1,0 +1,30 @@
+AWS VPN (Virtual Private Network)
+
+To form a connection between two private IP address we use VPN
+
+VPN (Virtual Private Network) refers to the ability to establish a secure network connection when using public networks. 
+VPNs mask your online identity and encrypt your internet activity. This makes it more challenging for outside parties to monitor your internet activities and steal data. 
+Real-time encryption is employed.
+
+AWS Virtual Private Network (VPN) solutions connect your on-premises networks, distant offices, client devices, and the AWS global network in a secure manner. 
+AWS Client VPN and AWS Site-to-Site VPN are the two services that make up this system. Each service offers a managed, scalable, and highly available cloud VPN solution to secure your network traffic.
+
+AWS Client VPN:
+It is a fully managed remote access VPN solution that allows your distant employees to safely access resources on AWS as well as your on-premises network. It automatically adjusts up or down dependent on demand because it is fully elastic. 
+Your users can access your applications in the same way before, during, and after the transfer to AWS.The OpenVPN protocol is supported by AWS Client VPN, including the software client.
+
+AWS Site-to-Site VPN:
+It is a fully managed service that uses IP Security (IPSec) tunnels to establish a secure link between your data centre or branch office and your AWS resources. You can connect to both your Amazon Virtual Private Clouds (VPC) and the AWS Transit Gateway when utilizing it, and two tunnels are used for each connection to increase redundancy.
+
+Practical
+https://www.youtube.com/watch?v=MkZ5OG0IFxQ&list=PLIm9KY-ideOsCuwMRoX1ltMZGuNZeBrRp&index=71
+
+
+
+
+
+
+
+
+
+

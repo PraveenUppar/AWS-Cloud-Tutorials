@@ -1,0 +1,16 @@
+AWS Direct Connect 
+
+Establish a dedicated connection without the internet from AWS to Premises
+
+The AWS Direct Connect cloud service is the shortest path to your AWS resources. While in transit, your network traffic remains on the AWS global network and never touches the public internet. 
+This reduces the chance of hitting bottlenecks or unexpected increases in latency. When creating a new connection, you can choose a hosted connection provided by an AWS Direct Connect Delivery Partner, or choose a dedicated connection from AWS—and deploy at AWS Direct Connect locations around the globe. 
+With AWS Direct Connect SiteLink, you can send data between AWS Direct Connect locations to create private network connections between the offices and data centers in your global network.
+
+AWS Direct Connect makes it easy to establish a dedicated connection from an on-premises network to one or more VPCs. AWS Direct Connect can reduce network costs, increase bandwidth throughput, and provide a more consistent network experience than internet-based connections. 
+It uses industry-standard 802.1Q VLANs to connect to Amazon VPC using private IP addresses
+
+https://www.youtube.com/watch?v=dadoE3joCug&list=PLIm9KY-ideOsCuwMRoX1ltMZGuNZeBrRp&index=72
+
+
+
+

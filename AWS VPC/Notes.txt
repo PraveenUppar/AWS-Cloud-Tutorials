@@ -85,10 +85,33 @@ ROUTE TABLE ENTRY SHOULD BE DONE FOR BOTH THE VPC
 
 AWS Network Access Control List (ACL) --> 
 
+It is used to protect the whole subnet and filter the traffic  
+Every subnet is by default protected by the ACL
 
+When creating a ACL it is set to deny all the traffic from inbound and outbound
 
+AWS ACL vs Security group
 
-----------   AWS NOTES  -----------
+Security group like a virtual firewall. It has inbound and outbound security rules in which all inbound traffic is blocked by default in private on AWS EC2. 
+It does not allow particular protocol no one will able to access our instances using this protocol you can stop traffic by using that rule by default everything that is denied. 
+There are various multiple security groups on EC2 instances. We can not block a specific IP address using that security group but using the network access list. 
+
+Network ACL is a modifiable default network. It allows all the inbound or outbound IPv4 traffic and here we create a type of custom network all or each custom network ACL denies all inbound and outbound traffic. 
+This network is the stateless and separate inbound and outbound rule with a default limit of 20 for both rules and starting with the lowest numbered rule. In which all subnet in VPC must be combined with network ACL one subnet to other network ACL at a time
+
+AWS Stateful vs Stateful Firewall
+
+VPC Endpoint -->
+A VPC endpoint enables customers to privately connect to supported AWS services and VPC endpoint services powered by AWS PrivateLink. Amazon VPC instances do not require public IP addresses to communicate with resources of the service. 
+Traffic between an Amazon VPC and a service does not leave the Amazon network.
+
+https://www.youtube.com/watch?v=qxo7-92ieAM&list=PLIm9KY-ideOsCuwMRoX1ltMZGuNZeBrRp&index=75
+
+AWS PrivateLink --> 
+
+https://www.youtube.com/watch?v=snQS5U0cVUA&list=PLIm9KY-ideOsCuwMRoX1ltMZGuNZeBrRp&index=76
+
+----------------   AWS NOTES  ----------------
 
 Virtual private clouds (VPC)
 A VPC is a virtual network that closely resembles a traditional network that you'd operate in
